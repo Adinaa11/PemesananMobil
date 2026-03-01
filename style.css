@@ -1,0 +1,143 @@
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  padding: 40px 20px;
+  font-family: system-ui, Arial, sans-serif;
+  background: #fff1f2; 
+  color: #1f2937;
+}
+
+h1, h2, #formPemesanan, #tabelPemesanan {
+  width: min(950px, 100%);
+  margin: auto;
+}
+
+h1 {
+  text-align: center;
+  margin-bottom: 25px;
+  font-size: 32px;
+  color: #b91c1c;
+}
+
+h2 {
+  margin: 40px auto 15px;
+  color: #b91c1c;
+}
+
+#formPemesanan {
+  background: #ffffff;
+  padding: 25px;
+  border-radius: 14px;
+  border: 1px solid #fecaca;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.07);
+}
+
+#formPemesanan br { display: none; }
+
+#formPemesanan label {
+  display: block;
+  margin: 15px 0 6px;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+#formPemesanan input[type="text"],
+#formPemesanan input[type="tel"],
+#formPemesanan select,
+#formPemesanan textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid #d1d5db;
+  background: #fffafa;
+  font-size: 14px;
+  margin-bottom: 10px;
+}
+
+#formPemesanan textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+#formPemesanan input:focus,
+#formPemesanan select:focus,
+#formPemesanan textarea:focus {
+  border-color: #dc2626;
+  outline: none;
+  background: #fff;
+  box-shadow: 0 0 0 3px rgba(220,38,38,0.15);
+}
+
+#formPemesanan input[type="radio"] {
+  margin-right: 6px;
+  margin-left: 10px;
+}
+
+#formPemesanan::after{
+  content: "";
+  display: block;
+  clear: both;
+}
+
+#formPemesanan button{
+  padding: 10px 18px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  float: right;          
+  margin-top: 30px;      
+}
+
+#formPemesanan button[type="reset"]{
+  background: #e5e7eb;
+  margin-right: 12px; 
+}
+
+#formPemesanan button[type="reset"]:hover{
+  background: #d1d5db;
+}
+
+#formPemesanan button[type="submit"]{
+  background: #dc2626;
+  color: white;
+}
+
+#formPemesanan button[type="submit"]:hover{
+  background: #991b1b;
+}
+
+#tabelPemesanan {
+  margin-top: 15px;
+  border-collapse: collapse;
+  background: #ffffff;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+  border: 1px solid #fee2e2;
+}
+
+#tabelPemesanan[border] { border: none; }
+
+#tabelPemesanan th {
+  background: #dc2626;
+  color: white;
+  padding: 12px;
+  font-size: 14px;
+  text-align: left;
+}
+
+#tabelPemesanan td {
+  padding: 10px;
+  border-bottom: 1px solid #f3f4f6;
+  font-size: 14px;
+}
+
+#tabelPemesanan tr:nth-child(even) {
+  background: #fff7f7;
+}
+
+#tabelPemesanan tr:hover {
+  background: #fee2e2;
+}
