@@ -3,20 +3,51 @@ let editIndex = -1;
 
 document.addEventListener("DOMContentLoaded", function () {
     tampilkanData();
+    cekPembayaran();
 });
 
+// ====== CEK PEMBAYARAN ======
+document.querySelectorAll('input[name="pembayaran"]')
+.forEach(radio => {
+    radio.addEventListener("change", cekPembayaran);
+});
+
+function cekPembayaran() {
+    let kredit = document.querySelector('input[name="pembayaran"][value="Kredit"]');
+    let info = document.getElementById("infoKredit");
+
+    if (kredit.checked) {
+        info.textContent = "Wajib menyerahkan berkas fotokopi KTP dan KK sebelum pengambilan.";
+    } else {
+        info.textContent = "";
+    }
+}
+
+// ====== VALIDASI & SUBMIT ======
 document.getElementById("formPemesanan")
 .addEventListener("submit", function (event) {
 
     event.preventDefault();
 
-    let nama = document.getElementById("nama").value;
-    let hp = document.getElementById("hp").value;
+    let nama = document.getElementById("nama").value.trim();
+    let hp = document.getElementById("hp").value.trim();
     let alamat = document.getElementById("alamat").value;
     let merek = document.getElementById("merek").value;
     let model = document.getElementById("model").value;
     let tahun = document.getElementById("tahun").value;
     let pembayaran = document.querySelector('input[name="pembayaran"]:checked');
+
+    // VALIDASI NAMA (tidak boleh angka)
+    if (!/^[a-zA-Z\s]+$/.test(nama)) {
+        alert("Nama hanya boleh huruf!");
+        return;
+    }
+
+    // VALIDASI HP (hanya angka)
+    if (!/^[0-9]+$/.test(hp)) {
+        alert("No HP hanya boleh angka!");
+        return;
+    }
 
     if (!pembayaran) {
         alert("Pilih jenis pembayaran!");
@@ -25,11 +56,6 @@ document.getElementById("formPemesanan")
 
     pembayaran = pembayaran.value;
 
-    if (hp.length < 10 || isNaN(hp)) {
-        alert("No HP harus angka dan minimal 10 digit!");
-        return;
-    }
-
     let objek = { nama, hp, alamat, merek, model, tahun, pembayaran };
 
     if (editIndex === -1) {
@@ -37,21 +63,22 @@ document.getElementById("formPemesanan")
     } else {
         dataPemesanan[editIndex] = objek;
         editIndex = -1;
+        resetMode();
     }
 
     localStorage.setItem("dataPemesanan", JSON.stringify(dataPemesanan));
 
     tampilkanData();
     document.getElementById("formPemesanan").reset();
+    cekPembayaran();
 });
 
+// ====== TAMPILKAN DATA ======
 function tampilkanData() {
-
     let tabel = document.getElementById("dataPemesanan");
     tabel.innerHTML = "";
 
     dataPemesanan.forEach((item, index) => {
-
         let baris = tabel.insertRow();
 
         baris.innerHTML = `
@@ -71,6 +98,7 @@ function tampilkanData() {
     });
 }
 
+// ====== HAPUS ======
 function hapusData(index) {
     if (confirm("Yakin ingin menghapus data ini?")) {
         dataPemesanan.splice(index, 1);
@@ -79,6 +107,7 @@ function hapusData(index) {
     }
 }
 
+// ====== EDIT ======
 function editData(index) {
 
     let item = dataPemesanan[index];
@@ -92,5 +121,39 @@ function editData(index) {
 
     document.querySelector(`input[name="pembayaran"][value="${item.pembayaran}"]`).checked = true;
 
+    cekPembayaran();
+
     editIndex = index;
+
+    document.getElementById("btnSubmit").textContent = "Simpan Perubahan";
+
+    buatTombolCancel();
+}
+
+// ====== CANCEL EDIT ======
+function buatTombolCancel() {
+
+    if (!document.getElementById("btnCancel")) {
+        let btn = document.createElement("button");
+        btn.textContent = "Cancel";
+        btn.type = "button";
+        btn.id = "btnCancel";
+        btn.style.marginLeft = "10px";
+
+        btn.onclick = function () {
+            resetMode();
+        };
+
+        document.getElementById("btnSubmit").after(btn);
+    }
+}
+
+function resetMode() {
+    editIndex = -1;
+    document.getElementById("formPemesanan").reset();
+    document.getElementById("btnSubmit").textContent = "Kirim Pemesanan";
+    cekPembayaran();
+
+    let btnCancel = document.getElementById("btnCancel");
+    if (btnCancel) btnCancel.remove();
 }
