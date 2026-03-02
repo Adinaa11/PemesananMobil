@@ -2,9 +2,7 @@
 <html lang="id">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Formulir Pemesanan Mobil</title>
-
+    <title>Formulir Pemesanan Mobil Bekas</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -13,80 +11,84 @@
 
     <form id="formPemesanan">
 
-    <label for="nama">Nama Lengkap:</label><br>
-    <input type="text" id="nama" name="nama" required><br><br>
+        <label for="nama">Nama Lengkap:</label><br>
+        <input type="text" id="nama" name="nama" required><br><br>
 
-    <label for="hp">No HP / WhatsApp:</label><br>
-    <input type="tel" id="hp" name="hp" required><br><br>
+        <label for="hp">No HP / WhatsApp:</label><br>
+        <input type="tel" id="hp" name="hp" required><br><br>
 
-    <label for="alamat">Alamat:</label><br>
-    <textarea id="alamat" name="alamat" rows="3" required></textarea><br><br>
+        <label for="alamat">Alamat:</label><br>
+        <textarea id="alamat" name="alamat" rows="3" required></textarea><br><br>
 
-    <label for="merek">Merek Mobil:</label><br>
-    <select id="merek" name="merek" required>
-        <option value="">-- Pilih Merek --</option>
-        <option value="Toyota">Toyota</option>
-        <option value="Honda">Honda</option>
-        <option value="Suzuki">Suzuki</option>
-        <option value="Daihatsu">Daihatsu</option>
-    </select><br><br>
+        <label for="merek">Merek Mobil:</label><br>
+        <select id="merek" name="merek" required>
+            <option value="">-- Pilih Merek --</option>
+            <option value="Toyota">Toyota</option>
+            <option value="Honda">Honda</option>
+            <option value="Suzuki">Suzuki</option>
+            <option value="Daihatsu">Daihatsu</option>
+        </select><br><br>
 
-    <label for="model">Model Mobil:</label><br>
-    <input type="text" id="model" name="model" required><br><br>
+        <label for="model">Model Mobil:</label><br>
+        <input type="text" id="model" name="model" required><br><br>
 
-    <label for="tahun">Tahun Mobil:</label><br>
-    <select id="tahun" name="tahun" required>
-        <option value="">-- Pilih Tahun --</option>
-        <option>2026</option>
-        <option>2025</option>
-        <option>2024</option>
-        <option>2023</option>
-        <option>2022</option>
-        <option>2021</option>
-        <option>2020</option>
-        <option>2019</option>
-        <option>2018</option>
-        <option>2017</option>
-        <option>2016</option>
-        <option>2015</option>
-        <option>2014</option>
-        <option>2013</option>
-        <option>2012</option>
-        <option>2011</option>
-        <option>2010</option>
-    </select><br><br>
+        <label for="tahun">Tahun Mobil:</label><br>
+        <select id="tahun" name="tahun" required>
+            <option value="">-- Pilih Tahun --</option>
+            <option>2026</option>
+            <option>2025</option>
+            <option>2024</option>
+            <option>2023</option>
+            <option>2022</option>
+            <option>2021</option>
+            <option>2020</option>
+            <option>2019</option>
+            <option>2018</option>
+            <option>2017</option>
+            <option>2016</option>
+            <option>2015</option>
+            <option>2014</option>
+            <option>2013</option>
+            <option>2012</option>
+            <option>2011</option>
+            <option>2010</option>
+        </select><br><br>
 
-    <label>Jenis Pembayaran:</label><br>
-    <input type="radio" name="pembayaran" value="Cash" required> Cash
-    <input type="radio" name="pembayaran" value="Kredit"> Kredit
-    <br><br>
+        <label>Jenis Pembayaran:</label><br>
+        <input type="radio" name="pembayaran" value="Cash" required> Cash
+        <input type="radio" name="pembayaran" value="Kredit"> Kredit
+        <br><br>
 
-    <button type="submit">Kirim Pemesanan</button>
-    <button type="reset">Reset</button>
+        
+        <p id="infoKredit" style="color:red; font-weight:bold;"></p>
 
-</form>
-    
+        <button type="submit" id="btnSubmit">Kirim Pemesanan</button>
+        <button type="reset">Reset</button>
+
+    </form>
+
     <h2>Daftar Pemesanan</h2>
 
-<table border="1" width="100%" id="tabelPemesanan">
-  <thead>
-    <tr>
-      <th>No</th>
-      <th>Nama</th>
-      <th>No HP</th>
-      <th>Alamat</th>
-      <th>Merek</th>
-      <th>Model</th>
-      <th>Tahun</th>
-      <th>Pembayaran</th>
-      <th>Aksi</th>
-    </tr>
-  </thead>
-  <tbody id="dataPemesanan">
-    
-  </tbody>
-</table>
+    <table border="1" width="100%" id="tabelPemesanan">
+        <thead>
+            <tr>
+                <th>No</th>
+                <th>Nama</th>
+                <th>No HP</th>
+                <th>Alamat</th>
+                <th>Merek</th>
+                <th>Model</th>
+                <th>Tahun</th>
+                <th>Pembayaran</th>
+                <th>Aksi</th>
+            </tr>
+        </thead>
+        <tbody id="dataPemesanan">
+         
+        </tbody>
+    </table>
 
     <script src="script.js"></script>
+
 </body>
 </html>
